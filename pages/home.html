@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>系统主页</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+        <h3>管理后台</h3>
+    </div>
+    <ul class="sidebar-menu">
+        <li class="active" data-src="content.html">
+            <span>首页</span>
+        </li>
+        <li data-src="content.html">
+            <span>内容展示</span>
+        </li>
+        <li data-src="visualization.html">
+            <span>数据可视化</span>
+        </li>
+        <li data-src="user.html">
+            <span>用户管理</span>
+        </li>
+    </ul>
+  </div>
+  <div>
+    <iframe src="content.html" id="iframe" frameborder="0"></iframe>
+  </div>
+  <script src="../scripts/layout.js"></script>
+   
+   <!-- 页脚 -->
+   <footer class="page-footer">
+     <div class="footer-bottom">
+       <p>&copy; 2025 Web编程技术课程设计</p>
+     </div>
+   </footer>
+ </body>
+</html>
+

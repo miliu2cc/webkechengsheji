@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#fafafa"/>
+  <rect x="50" y="50" width="300" height="200" fill="white" stroke="#ddd" stroke-width="2"/>
+  <line x1="70" y1="230" x2="330" y2="230" stroke="#333" stroke-width="2"/>
+  <line x1="70" y1="230" x2="70" y2="70" stroke="#333" stroke-width="2"/>
+  <rect x="80" y="180" width="30" height="50" fill="#3498db"/>
+  <rect x="120" y="150" width="30" height="80" fill="#e74c3c"/>
+  <rect x="160" y="120" width="30" height="110" fill="#2ecc71"/>
+  <rect x="200" y="100" width="30" height="130" fill="#f39c12"/>
+  <rect x="240" y="140" width="30" height="90" fill="#9b59b6"/>
+  <rect x="280" y="160" width="30" height="70" fill="#1abc9c"/>
+  <circle cx="95" cy="180" r="4" fill="#e74c3c"/>
+  <circle cx="135" cy="150" r="4" fill="#e74c3c"/>
+  <circle cx="175" cy="120" r="4" fill="#e74c3c"/>
+  <circle cx="215" cy="100" r="4" fill="#e74c3c"/>
+  <circle cx="255" cy="140" r="4" fill="#e74c3c"/>
+  <circle cx="295" cy="160" r="4" fill="#e74c3c"/>
+  <polyline points="95,180 135,150 175,120 215,100 255,140 295,160" fill="none" stroke="#e74c3c" stroke-width="2"/>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="18" fill="#2c3e50">Data Analysis</text>
+</svg>

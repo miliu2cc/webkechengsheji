@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>用户管理</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body class="iframe-page">
+  <div class="page-content">
+    <h1>用户管理</h1>
+    <div class="user-management">
+      <div class="user-stats">
+        <h3>用户统计</h3>
+        <p>总用户数: <span id="totalUsers">0</span></p>
+        <p>在线用户: <span id="onlineUsers">0</span></p>
+      </div>
+      
+      <div class="user-list">
+        <h3>用户列表</h3>
+        <table id="userTable">
+          <thead>
+            <tr>
+              <th>用户名</th>
+              <th>邮箱</th>
+              <th>注册时间</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <!-- 用户数据将通过JavaScript动态加载 -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 加载用户数据
+    function loadUsers() {
+      const users = JSON.parse(localStorage.getItem('users') || '{}');
+      const userTableBody = document.getElementById('userTableBody');
+      const totalUsersSpan = document.getElementById('totalUsers');
+      const onlineUsersSpan = document.getElementById('onlineUsers');
+      
+      // 清空表格
+      userTableBody.innerHTML = '';
+      
+      const userEmails = Object.keys(users);
+      totalUsersSpan.textContent = userEmails.length;
+      onlineUsersSpan.textContent = Math.floor(userEmails.length * 0.3); // 模拟在线用户
+      
+      userEmails.forEach(email => {
+        const user = users[email];
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${user.username}</td>
+          <td>${user.email}</td>
+          <td>${new Date().toLocaleDateString()}</td>
+          <td><span class="status-active">活跃</span></td>
+        `;
+        userTableBody.appendChild(row);
+      });
+    }
+    
+    // 页面加载时执行
+    document.addEventListener('DOMContentLoaded', loadUsers);
+  </script>
+</body>
+</html>
