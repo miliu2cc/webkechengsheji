@@ -2,198 +2,195 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>系统主页</title>
+  <title>用户数据管理系统</title>
   <link rel="stylesheet" href="../styles/style.css">
+</head>
 </head>
 <body class="iframe-page">
    <div class="page-content">
-     <h1>内容展示</h1>
-     <p class="page-description">探索我们的技术领域和专业服务</p>
-     
-     <div class="content-grid">
-       <div class="content-card">
-         <img src="../images/ai.jpg" alt="人工智能" class="card-image">
-         <div class="card-content">
-           <h3>人工智能技术</h3>
-           <p>探索最前沿的AI技术，包括机器学习、深度学习、自然语言处理等领域。我们致力于将AI技术应用到实际业务场景中，为客户提供智能化解决方案。</p>
-           <div class="card-tags">
-             <span class="tag">机器学习</span>
-             <span class="tag">深度学习</span>
-             <span class="tag">NLP</span>
-           </div>
+     <div class="data-management">
+       <h1>用户数据管理系统</h1>
+       <p class="page-description">表单收集、数据校验、CSV文件管理</p>
+       
+       <!-- 统计信息 -->
+       <div class="stats-section">
+         <div class="stat-card">
+           <div class="stat-number" id="totalUsers">0</div>
+           <div class="stat-label">总用户数</div>
+         </div>
+         <div class="stat-card">
+           <div class="stat-number" id="avgAge">0</div>
+           <div class="stat-label">平均年龄</div>
+         </div>
+         <div class="stat-card">
+           <div class="stat-number" id="mostPopularField">-</div>
+           <div class="stat-label">热门领域</div>
          </div>
        </div>
        
-       <div class="content-card">
-         <img src="../images/frontend.jpg" alt="前端开发" class="card-image">
-         <div class="card-content">
-           <h3>前端开发</h3>
-           <p>现代化的前端开发技术栈，包括HTML5、CSS3、JavaScript、React、Vue等。我们专注于创建用户友好的界面和优秀的用户体验。</p>
-           <div class="card-tags">
-             <span class="tag">HTML5</span>
-             <span class="tag">CSS3</span>
-             <span class="tag">JavaScript</span>
-           </div>
-         </div>
-       </div>
-       
-       <div class="content-card">
-         <img src="../images/data-analysis.jpg" alt="数据分析" class="card-image">
-         <div class="card-content">
-           <h3>数据分析</h3>
-           <p>专业的数据分析服务，通过数据挖掘、统计分析、可视化等手段，帮助企业从数据中获取有价值的洞察和商业智能。</p>
-           <div class="card-tags">
-             <span class="tag">数据挖掘</span>
-             <span class="tag">统计分析</span>
-             <span class="tag">可视化</span>
-           </div>
-         </div>
-       </div>
-       
-       <div class="content-card">
-         <div class="card-content full-content">
-           <h3>用户信息收集</h3>
-           <p>请填写您的基本信息，帮助我们更好地为您提供服务。</p>
-           <form id="userInfoForm" class="user-form">
+       <!-- 表单区域 -->
+       <div class="form-section">
+         <h2>用户信息收集</h2>
+         <form id="userInfoForm">
+           <div class="form-grid">
              <div class="form-group">
-               <label for="userName">姓名：</label>
+               <label for="userName">姓名 *</label>
                <input type="text" id="userName" name="userName" required>
+               <div class="error-message" id="nameError"></div>
              </div>
              <div class="form-group">
-               <label for="userAge">年龄：</label>
+               <label for="userAge">年龄 *</label>
                <input type="number" id="userAge" name="userAge" min="1" max="120" required>
+               <div class="error-message" id="ageError"></div>
              </div>
              <div class="form-group">
-               <label for="userEmail">邮箱：</label>
-               <input type="email" id="userEmail" name="userEmail" required>
+               <label for="userGender">性别 *</label>
+               <select id="userGender" name="userGender" required>
+                 <option value="">请选择</option>
+                 <option value="M">男</option>
+                 <option value="F">女</option>
+               </select>
+               <div class="error-message" id="genderError"></div>
              </div>
              <div class="form-group">
-               <label for="userCategory">兴趣领域：</label>
+               <label for="userCategory">专业领域 *</label>
                <select id="userCategory" name="userCategory" required>
                  <option value="">请选择</option>
                  <option value="产品设计">产品设计</option>
                  <option value="前端开发">前端开发</option>
                  <option value="数据分析">数据分析</option>
                </select>
+               <div class="error-message" id="categoryError"></div>
              </div>
-             <button type="submit" class="submit-btn">提交信息</button>
-           </form>
+             <div class="form-group">
+               <label for="userScore1">课程1分数</label>
+               <input type="number" id="userScore1" name="userScore1" min="0" max="100" placeholder="0-100">
+               <div class="error-message" id="score1Error"></div>
+             </div>
+             <div class="form-group">
+               <label for="userScore2">课程2分数</label>
+               <input type="number" id="userScore2" name="userScore2" min="0" max="100" placeholder="0-100">
+               <div class="error-message" id="score2Error"></div>
+             </div>
+             <div class="form-group">
+               <label for="userScore3">课程3分数</label>
+               <input type="number" id="userScore3" name="userScore3" min="0" max="100" placeholder="0-100">
+               <div class="error-message" id="score3Error"></div>
+             </div>
+           </div>
+           <div class="form-buttons">
+             <button type="submit" class="btn btn-primary" id="submitBtn">添加用户</button>
+             <button type="button" class="btn btn-secondary" id="resetBtn">重置表单</button>
+             <button type="button" class="btn btn-success" id="loadCsvBtn">加载CSV文件</button>
+             <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+           </div>
+         </form>
+       </div>
+       
+       <!-- 表格区域 -->
+       <div class="table-section">
+         <h2>用户数据表格</h2>
+         <div class="table-controls">
+           <div class="table-controls-left">
+             <button class="btn btn-secondary" id="sortByName">按姓名排序</button>
+             <button class="btn btn-secondary" id="sortByAge">按年龄排序</button>
+             <button class="btn btn-secondary" id="sortByCategory">按领域排序</button>
+             <button class="btn btn-success" id="exportCsvBtn">导出CSV</button>
+           </div>
+           <div class="table-controls-right">
+             <input type="text" class="search-box" id="searchInput" placeholder="搜索用户...">
+             <button class="btn btn-danger" id="clearAllBtn">清空所有数据</button>
+           </div>
+         </div>
+         <div style="overflow-x: auto;">
+           <table class="data-table" id="dataTable">
+             <thead>
+               <tr>
+                 <th>ID</th>
+                 <th>姓名</th>
+                 <th>年龄</th>
+                 <th>性别</th>
+                 <th>专业领域</th>
+                 <th>课程1</th>
+                 <th>课程2</th>
+                 <th>课程3</th>
+                 <th>提交时间</th>
+                 <th>操作</th>
+               </tr>
+             </thead>
+             <tbody id="tableBody">
+             </tbody>
+           </table>
+         </div>
+         <div id="noDataMessage" style="text-align: center; padding: 40px; color: #666; display: none;">
+           暂无数据，请添加用户信息或加载CSV文件
          </div>
        </div>
      </div>
-     
-     <div id="userDataTable" class="data-table-container" style="display: none;">
-       <h2>用户数据表格</h2>
-       <div class="table-controls">
-         <button id="sortByName" class="sort-btn">按姓名排序</button>
-         <button id="sortByAge" class="sort-btn">按年龄排序</button>
-         <button id="sortByCategory" class="sort-btn">按领域排序</button>
-       </div>
-       <table id="dataTable">
-         <thead>
-           <tr>
-             <th>ID</th>
-             <th>姓名</th>
-             <th>年龄</th>
-             <th>邮箱</th>
-             <th>兴趣领域</th>
-             <th>提交时间</th>
-           </tr>
-         </thead>
-         <tbody id="tableBody">
-         </tbody>
-       </table>
+   </div>
+   
+   <!-- 编辑模态框 -->
+   <div id="editModal" class="modal">
+     <div class="modal-content">
+       <span class="close">&times;</span>
+       <h2>编辑用户信息</h2>
+       <form id="editForm">
+         <div class="form-group">
+           <label for="editName">姓名 *</label>
+           <input type="text" id="editName" required>
+         </div>
+         <div class="form-group">
+           <label for="editAge">年龄 *</label>
+           <input type="number" id="editAge" min="1" max="120" required>
+         </div>
+         <div class="form-group">
+           <label for="editGender">性别 *</label>
+           <select id="editGender" required>
+             <option value="">请选择</option>
+             <option value="M">男</option>
+             <option value="F">女</option>
+           </select>
+         </div>
+         <div class="form-group">
+           <label for="editCategory">专业领域 *</label>
+           <select id="editCategory" required>
+             <option value="">请选择</option>
+             <option value="产品设计">产品设计</option>
+             <option value="前端开发">前端开发</option>
+             <option value="数据分析">数据分析</option>
+           </select>
+         </div>
+         <div class="form-group">
+           <label for="editScore1">课程1分数</label>
+           <input type="number" id="editScore1" min="0" max="100">
+         </div>
+         <div class="form-group">
+           <label for="editScore2">课程2分数</label>
+           <input type="number" id="editScore2" min="0" max="100">
+         </div>
+         <div class="form-group">
+           <label for="editScore3">课程3分数</label>
+           <input type="number" id="editScore3" min="0" max="100">
+         </div>
+         <div class="form-buttons">
+           <button type="submit" class="btn btn-primary">保存修改</button>
+           <button type="button" class="btn btn-secondary" id="cancelEditBtn">取消</button>
+         </div>
+       </form>
      </div>
    </div>
    
-   <script>
-     // 用户数据存储
-     let userData = JSON.parse(localStorage.getItem('userData')) || [];
-     let nextId = userData.length > 0 ? Math.max(...userData.map(u => u.id)) + 1 : 1;
-     
-     // 表单提交处理
-     document.getElementById('userInfoForm').addEventListener('submit', function(e) {
-       e.preventDefault();
-       
-       const formData = {
-         id: nextId++,
-         name: document.getElementById('userName').value,
-         age: parseInt(document.getElementById('userAge').value),
-         email: document.getElementById('userEmail').value,
-         category: document.getElementById('userCategory').value,
-         timestamp: new Date().toISOString().split('T')[0]
-       };
-       
-       // 数据验证
-       if (!formData.name || !formData.age || !formData.email || !formData.category) {
-         alert('请填写所有必填字段！');
-         return;
-       }
-       
-       // 邮箱格式验证
-       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-       if (!emailRegex.test(formData.email)) {
-         alert('请输入有效的邮箱地址！');
-         return;
-       }
-       
-       // 保存数据
-       userData.push(formData);
-       localStorage.setItem('userData', JSON.stringify(userData));
-       
-       // 显示成功消息
-       alert('信息提交成功！');
-       
-       // 清空表单
-       this.reset();
-       
-       // 显示数据表格
-       displayDataTable();
-     });
-     
-     // 显示数据表格
-     function displayDataTable() {
-       const tableContainer = document.getElementById('userDataTable');
-       const tableBody = document.getElementById('tableBody');
-       
-       tableContainer.style.display = 'block';
-       tableBody.innerHTML = '';
-       
-       userData.forEach(user => {
-         const row = document.createElement('tr');
-         row.innerHTML = `
-           <td>${user.id}</td>
-           <td>${user.name}</td>
-           <td>${user.age}</td>
-           <td>${user.email}</td>
-           <td>${user.category}</td>
-           <td>${user.timestamp}</td>
-         `;
-         tableBody.appendChild(row);
-       });
-     }
-     
-     // 排序功能
-     document.getElementById('sortByName').addEventListener('click', () => {
-       userData.sort((a, b) => a.name.localeCompare(b.name));
-       displayDataTable();
-     });
-     
-     document.getElementById('sortByAge').addEventListener('click', () => {
-       userData.sort((a, b) => a.age - b.age);
-       displayDataTable();
-     });
-     
-     document.getElementById('sortByCategory').addEventListener('click', () => {
-       userData.sort((a, b) => a.category.localeCompare(b.category));
-       displayDataTable();
-     });
-     
-     // 页面加载时显示已有数据
-     if (userData.length > 0) {
-       displayDataTable();
-     }
-   </script>
+   <!-- 通知消息 -->
+   <div id="notification" class="notification"></div>
+   
+   <script src="../scripts/auth-check.js"></script>
+   <script src="../scripts/content-management.js"></script>
+   <!-- 页脚 -->
+   <footer class="page-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2025 Web编程技术课程设计. email: aaa@a.com</p>
+    </div>
+  </footer>
    
  </body>
 </html>

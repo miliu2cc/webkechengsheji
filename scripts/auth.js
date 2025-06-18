@@ -18,7 +18,7 @@ if (document.getElementById("registerForm")) {
       alert("注册成功，请登录！");
       window.location.href = "../index.html";
     });
-  }
+}
   
   // 登录功能
   if (document.getElementById("loginForm")) {
@@ -39,10 +39,22 @@ if (document.getElementById("registerForm")) {
         alert("密码错误！");
         return;
       }
-      localStorage.setItem("loggedInUser", JSON.parse(user).username);
-  
+      
+      // 保存当前登录用户的完整信息
+      const userData = JSON.parse(user);
+      const currentUser = {
+        username: userData.username,
+        email: email,
+        password: userData.password
+      };
+      
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("loggedInUser", userData.username);
+
       window.location.href = "pages/home.html";
+      
     });
-  }
+}
 
   

@@ -6,64 +6,47 @@
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body class="iframe-page">
+  <!-- 退出登录按钮 -->
+  <div class="logout-container">
+    <button id="logoutBtn" class="logout-btn">退出登录</button>
+  </div>
+  
   <div class="page-content">
-    <h1>用户管理</h1>
-    <div class="user-management">
-      <div class="user-stats">
-        <h3>用户统计</h3>
-        <p>总用户数: <span id="totalUsers">0</span></p>
-        <p>在线用户: <span id="onlineUsers">0</span></p>
+    <!-- 当前用户信息区域 -->
+    <div class="user-profile-section">
+      <div class="user-info">
+        <h1 id="welcomeMessage">欢迎回来，用户！</h1>
       </div>
-      
-      <div class="user-list">
-        <h3>用户列表</h3>
-        <table id="userTable">
-          <thead>
-            <tr>
-              <th>用户名</th>
-              <th>邮箱</th>
-              <th>注册时间</th>
-              <th>状态</th>
-            </tr>
-          </thead>
-          <tbody id="userTableBody">
-            <!-- 用户数据将通过JavaScript动态加载 -->
-          </tbody>
-        </table>
+    </div>
+    
+    <div class="user-dashboard">
+      <h2>个人中心</h2>
+      <div class="dashboard-cards">
+        <div class="dashboard-card" onclick="window.location.href='profile.html'" style="cursor: pointer;">
+          <div class="card-icon">👤</div>
+          <div class="card-content">
+            <h3>个人资料</h3>
+            <p>管理您的个人信息和偏好设置</p>
+          </div>
+        </div>
+        <div class="dashboard-card" onclick="window.location.href='security.html'" style="cursor: pointer;">
+          <div class="card-icon">🔒</div>
+          <div class="card-content">
+            <h3>安全设置</h3>
+            <p>修改密码和安全验证选项</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <!-- 页脚 -->
+  <footer class="page-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2025 Web编程技术课程设计. email: aaa@a.com</p>
+    </div>
+  </footer>
   
-  <script>
-    // 加载用户数据
-    function loadUsers() {
-      const users = JSON.parse(localStorage.getItem('users') || '{}');
-      const userTableBody = document.getElementById('userTableBody');
-      const totalUsersSpan = document.getElementById('totalUsers');
-      const onlineUsersSpan = document.getElementById('onlineUsers');
-      
-      // 清空表格
-      userTableBody.innerHTML = '';
-      
-      const userEmails = Object.keys(users);
-      totalUsersSpan.textContent = userEmails.length;
-      onlineUsersSpan.textContent = Math.floor(userEmails.length * 0.3); // 模拟在线用户
-      
-      userEmails.forEach(email => {
-        const user = users[email];
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${user.username}</td>
-          <td>${user.email}</td>
-          <td>${new Date().toLocaleDateString()}</td>
-          <td><span class="status-active">活跃</span></td>
-        `;
-        userTableBody.appendChild(row);
-      });
-    }
-    
-    // 页面加载时执行
-    document.addEventListener('DOMContentLoaded', loadUsers);
-  </script>
+  <script src="../scripts/user.js"></script>
+  <script src="../scripts/auth-check.js"></script>
 </body>
 </html>
