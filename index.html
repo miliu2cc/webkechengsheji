@@ -2,29 +2,54 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>用户登录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户登录 - 数据管理系统</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-  <h2>用户登录</h2>
-  <form id="loginForm">
-    <label>邮箱：</label>
-    <input type="email" id="loginEmail" required><br>
-    <label>密码：</label>
-    <input type="password" id="loginPassword" required><br>
-    <button type="submit">登录</button>
-
-  </form>
-  <p>没有账号？<a href="pages/register.html">注册</a></p>
+<body class="login-page">
+  <div class="login-wrapper">
+    <div class="login-box">
+      <div class="login-header">
+        <div class="logo-circle">
+          <span class="logo-text">📊</span>
+        </div>
+        <h2>数据管理系统</h2>
+        <p>请登录您的账户</p>
+      </div>
+      
+      <form id="loginForm" class="login-form">
+        <div class="input-group">
+          <label for="loginEmail">邮箱地址</label>
+          <input type="email" id="loginEmail" placeholder="请输入邮箱地址" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="loginPassword">密码</label>
+          <input type="password" id="loginPassword" placeholder="请输入密码" required>
+        </div>
+        
+        <div class="form-options">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="rememberMe">
+            <span class="checkbox-text">记住我</span>
+          </label>
+          <a href="#" class="forgot-link">忘记密码？</a>
+        </div>
+        
+        <button type="submit" class="login-button">
+          登录
+        </button>
+      </form>
+      
+      <div class="register-prompt">
+        <p>还没有账户？<a href="pages/register.html">立即注册</a></p>
+      </div>
+    </div>
+  </div>
 
   <script src="scripts/auth.js"></script>
   <script src="scripts/content-management.js"></script>
    
-   <!-- 页脚 -->
-   <footer class="page-footer">
-     <div class="footer-bottom">
-       <p>&copy; 2024 Web编程技术课程设计. email: aaa@a.com</p>
-     </div>
-   </footer>
+   
  </body>
 </html>

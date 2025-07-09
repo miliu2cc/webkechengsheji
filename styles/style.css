@@ -1,16 +1,206 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
 }
 
-/* 登录表单样式 */
-form {
+/* 登录页面样式 */
+.login-page {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-box {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo-circle {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.logo-text {
+    font-size: 28px;
+}
+
+.login-header h2 {
+    color: #1f2937;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.login-header p {
+    color: #6b7280;
+    font-size: 14px;
+    margin: 0;
+}
+
+.login-form {
+    margin-bottom: 24px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f9fafb;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.input-group input::placeholder {
+    color: #9ca3af;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #374151;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    accent-color: #4f46e5;
+}
+
+.forgot-link {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+    color: #3730a3;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.login-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.register-prompt {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.register-prompt a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.register-prompt a:hover {
+    color: #3730a3;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 24px;
+        margin: 0 16px;
+    }
+    
+    .login-header h2 {
+        font-size: 20px;
+    }
+    
+    .logo-circle {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .logo-text {
+        font-size: 24px;
+    }
+}
+
+/* 原有表单样式保持兼容 */
+form:not(.login-form) {
     margin: 40px;
 }
 
-form input {
+form:not(.login-form) input {
     margin: 5px 0;
     padding: 8px;
     border: 1px solid #ddd;
@@ -18,7 +208,7 @@ form input {
     width: 200px;
 }
 
-form button {
+form:not(.login-form) button {
     margin-top: 10px;
     padding: 8px 15px;
     background-color: #007bff;
@@ -28,7 +218,36 @@ form button {
     cursor: pointer;
 }
 
-form button:hover {
+form:not(.login-form) button:hover {
+    background-color: #0056b3;
+}
+
+/* 登录页面样式已简化 */
+
+/* 原有表单样式保持兼容 */
+form:not(.login-form) {
+    margin: 40px;
+}
+
+form:not(.login-form) input {
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+}
+
+form:not(.login-form) button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form:not(.login-form) button:hover {
     background-color: #0056b3;
 }
 

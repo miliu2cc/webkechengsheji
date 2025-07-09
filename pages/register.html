@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>用户注册</title>
-  <link rel="stylesheet" href="../styles/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册 - Web编程技术课程设计</title>
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
-<body>
-  <h2>用户注册</h2>
-  <form id="registerForm">
-    <label>用户名：</label>
-    <input type="text" id="regUsername" required><br>
-    <label>邮箱：</label>
-    <input type="email" id="regEmail" required><br>
-    <label>密码：</label>
-    <input type="password" id="regPassword" required><br>
-    <button type="submit">注册</button>
-  </form>
-  <p>已有账号？<a href="../index.html">去登录</a></p>
-
-  <script src="../scripts/auth.js"></script>
-   
-   <!-- 页脚 -->
-   <footer class="page-footer">
-     <div class="footer-bottom">
-       <p>&copy; 2024 Web编程技术课程设计. email: aaa@a.com</p>
-     </div>
-   </footer>
- </body>
+<body class="login-page">
+    <div class="login-wrapper">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="logo">📝</div>
+                <h1>用户注册</h1>
+                <p>创建您的新账户</p>
+            </div>
+            
+            <form id="registerForm" class="login-form">
+                <div class="form-group">
+                    <label for="regUsername">用户名</label>
+                    <input type="text" id="regUsername" required>
+                    
+                </div>
+                
+                <div class="form-group">
+                    <label for="regEmail">邮箱地址</label>
+                    <input type="email" id="regEmail" required>
+                    
+                </div>
+                
+                <div class="form-group">
+                    <label for="regPassword">密码</label>
+                    <input type="password" id="regPassword" required>
+                    
+                </div>
+                
+                <button type="submit" class="login-button">注册账户</button>
+            </form>
+            
+            <div class="register-prompt">
+                <p>已有账号？<a href="../index.html" class="register-link">立即登录</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../scripts/auth.js"></script>
+    
+    
+</body>
 </html>
